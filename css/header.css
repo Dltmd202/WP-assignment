@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'LeferiPoint-BlackObliqueA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackObliqueA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+}
+
+.header .top_inner[data-v-7c42161a] {
+    padding: 8px 40px;
+}
+
+.header_top{
+    border-bottom: #e3e3e3 solid 1px;
+}
+
+.top_inner{
+    display: flex;
+}
+
+.top_list{
+    display: flex;
+    margin-left: auto;
+    padding: 8px 40px;
+    font-size: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.top_link{
+    color: rgba(34, 34, 34, 0.8);
+}
+
+.top_item{
+    margin-left: 24px;
+}
+
+
+.logo {
+    font-family: 'LeferiPoint-BlackObliqueA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackObliqueA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.main_inner{
+    border-bottom: #e3e3e3 solid 1px;
+}
+
+.main_inner_nav{
+    display: flex;
+    padding: 0 40px;
+}
+
+.gnb {
+    display: flex;
+    margin-left: auto;
+}
+
+.gnb_list {
+    display: flex;
+    align-items: center;
+}
+
+.gnb_item{
+    margin-left: 40px;
+    font-size: 15px;
+    align-items: center;
+}
+
+.header_item_tag{
+    position: relative;
+    left: 50%;
+    margin-bottom: 50px;
+}
