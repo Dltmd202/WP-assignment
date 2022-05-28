@@ -30,8 +30,7 @@
                       SELECT s.price
                           FROM sell as s
                           LEFT JOIN order_shoe as os on s.order_shoe_id = os.id
-                          WHERE os.size = {$size} && os.id = {$id}
-                          ORDER BY s.price DESC
+                          WHERE os.size = {$size} && os.id = {$id} && s.is_sold = 0 && DATE_FORMAT(now(), '%Y-%m-%d') <= s.deadline
                           LIMIT 1
                    ) as direct_purcharse_price
                      FROM shoe as sh
@@ -52,7 +51,13 @@
     <?= $row['name']?>
   </div>
   <form action="./bid_action.php?id=<?=$id?>&size=<?=$size?>&order_id=<?=$row['order_id']?>" method="post">
-    <div>
+    <div
+      <?php
+        if(!isset($row['direct_purcharse_price'])){
+          echo "style='display: none'";
+        }
+      ?>
+    >
       <label>
         <input type="checkbox" name="immediate"
                value="immediate" id="immediate_check" onchange="isImmediatelyPurchaseChecked(this)">

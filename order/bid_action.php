@@ -3,7 +3,7 @@
 $mysqli = new mysqli("localhost", "root", "1234", "wp");
 $mysqli->begin_transaction();
 
-if($_POST['immediate']){
+if(isset($_POST['immediate'])){
   try{
     $id = $_GET['id'];
     $size = $_GET['size'];
@@ -12,7 +12,7 @@ if($_POST['immediate']){
     $query = "SELECT s.id, s.price, s.order_shoe_id
                 FROM sell as s
                 LEFT JOIN order_shoe as os on s.order_shoe_id = os.id
-                WHERE os.size = ? && os.shoe_id = ? && s.is_sold = 0 && now() <= s.deadline
+                WHERE os.size = ? && os.shoe_id = ? && s.is_sold = 0 && DATE_FORMAT(now(), '%Y-%m-%d') <= s.deadline
                 ORDER BY s.price DESC
                 LIMIT 1";
 
@@ -103,7 +103,7 @@ if($_POST['immediate']){
     $query = "SELECT s.id, s.price, s.order_shoe_id
                 FROM sell as s
                 LEFT JOIN order_shoe as os on s.order_shoe_id = os.id
-                WHERE os.size = ? && os.shoe_id = ? && s.is_sold = 0 && now() <= s.deadline
+                WHERE os.size = ? && os.shoe_id = ? && s.is_sold = 0 && DATE_FORMAT(now(), '%Y-%m-%d') <= s.deadline
                 ORDER BY s.price DESC
                 LIMIT 1";
 
