@@ -25,7 +25,7 @@
                       SELECT s.price
                           FROM sell as s
                           LEFT JOIN order_shoe as os on s.order_shoe_id = os.id
-                          WHERE os.size = {$size} && os.id = {$id} && s.is_sold = 0 && DATE_FORMAT(now(), '%Y-%m-%d') <= s.deadline
+                          WHERE os.size = {$size} && os.shoe_id = {$id} && s.is_sold = 0 && DATE_FORMAT(now(), '%Y-%m-%d') <= s.deadline
                           ORDER BY s.price ASC
                           LIMIT 1
                    ) as direct_purcharse_price
@@ -61,6 +61,7 @@
               <?= $row['name']?>
             </p>
             <p>
+              <!--- TODO 상품에 desc column 추가하기 -->
               조던 1 로우 골드 스타피쉬
             </p>
           </div>
@@ -88,8 +89,9 @@
               </div>
               <div class="price">
                 <div class="amout">
-                  <span class="num" data-v-5943a237="">230,000</span>
-                  <span class="won" data-v-5943a237="">원</span>
+                  <!--- TODO 최근거래금액 로직 넣기 -->
+                  <span class="num">230,000</span>
+                  <span class="won">원</span>
                 </div>
               </div>
             </div>
@@ -110,6 +112,7 @@
                 <strong class="title">판매</strong>
                 <div class="price">
                   <span class="amount">
+                    <!--- TODO 즉시 판매금액 로직 넣기 -->
                     <em class="num">245,000</em>
                     <span class="won">원</span>
                   </span>
