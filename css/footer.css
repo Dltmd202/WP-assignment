@@ -1,0 +1,63 @@
+
+.service_area{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+.customer_service{
+    display: flex;
+    text-align: right;
+    justify-content: flex-end;
+    font-size: 12px;
+}
+
+
+.menu_box{
+    display: flex;
+    font-size: 11px;
+}
+.corperate_info ul {
+    display: flex;
+    font-size: 9px;
+    text-align: center;
+
+}
+li{
+    margin: 7px;
+}
+.address ul{
+    display: flex;
+    font-size: 8px;
+    text-align: center;
+}
+.info_bottom{
+    margin-top: 0px;
+    justify-content: center;
+    text-align: center;
+
+}
+
+footer{
+    max-width: 1280px;
+    margin:0 auto;
+}
+
+.menu_list{
+    padding-inline-start: 0;
+}
+
+.menu_info{
+    margin-left: 40px;
+}
+
+ul {
+    padding-inline-start: 0;
+}
