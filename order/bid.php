@@ -32,6 +32,7 @@
                           FROM sell as s
                           LEFT JOIN order_shoe as os on s.order_shoe_id = os.id
                           WHERE os.size = {$size} && os.shoe_id = {$id} && s.is_sold = 0 && DATE_FORMAT(now(), '%Y-%m-%d') <= s.deadline
+                          ORDER BY s.price ASC
                           LIMIT 1
                    ) as direct_purcharse_price
                      FROM shoe as sh

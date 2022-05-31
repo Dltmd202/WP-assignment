@@ -1,5 +1,4 @@
-<div class="container">
-  <footer>
+ <footer class="footer_content">
     <div class = "inner">
         <div class = "service_area">
             <div class = "footer_menu">
@@ -48,4 +47,3 @@
         </div>
     </div>
   </footer>
-</div>

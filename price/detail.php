@@ -29,7 +29,15 @@
                           WHERE os.size = {$size} && os.shoe_id = {$id} && s.is_sold = 0 && DATE_FORMAT(now(), '%Y-%m-%d') <= s.deadline
                           ORDER BY s.price ASC
                           LIMIT 1
-                   ) as direct_purcharse_price
+                   ) as direct_purcharse_price,
+                   (
+                      SELECT b.price
+                          FROM bid as b
+                          LEFT JOIN order_shoe as os on b.order_shoe_id = os.id
+                          WHERE os.size = {$size} && os.shoe_id = {$id} && b.is_success = 0 && DATE_FORMAT(now(), '%Y-%m-%d') <= b.deadline 
+                          ORDER BY b.price DESC 
+                          LIMIT 1
+                   ) as direct_selling_price 
                    FROM shoe as sh
                    LEFT JOIN brand as b on sh.brand_id = b.id
                    WHERE sh.id = {$id}";
@@ -55,19 +63,19 @@
       <div class="right_col">
         <div class="column-top">
           <div class="main-title">
-            <a href="#">
+            <a href="#" class="brand">
               <?= $row['brand']?>
             </a>
-            <p>
+            <p class="title">
               <?= $row['name']?>
             </p>
-            <p>
+            <p class="desc">
               <!--- TODO 상품에 desc column 추가하기 -->
               조던 1 로우 골드 스타피쉬
             </p>
           </div>
           <div class="product_figure_wrap">
-            <div class="detail_size">
+            <div class="detail_size wrap_partition">
               <div class="title">
                 <span class="title_txt">
                   사이즈
@@ -76,9 +84,16 @@
               <div class="size">
                 <a href="" class="btn-size">
                   <span class="btn_text">
-                    모든 사이즈
+                    <?php
+                      $id = $_GET['id'];
+
+                      if(isset($_SESSION['size'])){
+                        echo $_SESSION['size'];
+                      } else {
+                        echo "로그인하세요";
+                      }
+                      ?>
                   </span>
-                  <img src="../img/dropdownbtn.svg"/>
                 </a>
               </div>
             </div>
@@ -109,12 +124,11 @@
                   <span class="desc">즉시 구매가</span>
                 </div>
               </a>
-              <a href="#" class="btn">
+              <a href="../order/sell.php?id=<?=$id?>&size=<?=$size?>" class="btn">
                 <strong class="title">판매</strong>
                 <div class="price">
                   <span class="amount">
-                    <!--- TODO 즉시 판매금액 로직 넣기 -->
-                    <em class="num">245,000</em>
+                    <em class="num"><?=$row['direct_selling_price']?></em>
                     <span class="won">원</span>
                   </span>
                   <span class="desc">즉시 판매가</span>

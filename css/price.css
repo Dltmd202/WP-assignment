@@ -24,17 +24,19 @@
 
 
 .right_col{
-    padding-left: 3.334%;
+    padding-left: 60px;
     border-left: 1px solid rgba(34, 34, 34, 0.5);;
-
+    min-height: 404px;
 }
 
-.price_col{
-
+.btn-wrap{
+    margin-top: 30px;
 }
 
 .detail_banner{
     position: relative;
+    float: right;
+    padding-right: 60px;
 }
 
 .item_picture{
@@ -56,11 +58,117 @@
 }
 
 .division_btn_box{
-    margin: 10px 20px;
     display: flex;
+    height: 60px;
 }
 
-.btn{
-    margin: 10px 0;
-    border: 1px solid #222222;
+.main-title > .brand {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 19px;
+    padding-top: 1px;
+    margin-bottom: 9px;
+    font-size: 18px;
+    letter-spacing: -.27px;
+    font-weight: 800;
+    border-bottom: 2px solid #222;
+}
+
+.main-title > .title {
+    margin-bottom: 4px;
+    font-size: 18px;
+    letter-spacing: -.09px;
+    font-weight: 400;
+}
+
+.main-title > .desc {
+    line-height: 17px;
+    font-size: 14px;
+    letter-spacing: -.21px;
+    letter-spacing: -.15px;
+    color: rgba(34,34,34,.5);
+}
+
+.product_figure_wrap > .detail_size > .title > .title_txt{
+    line-height: 17px;
+    font-size: 14px;
+    letter-spacing: -.21px;
+    letter-spacing: -.15px;
+    color: rgba(34,34,34,.5);
+}
+
+.product_figure_wrap > div{
+    padding-top: 19px;
+    padding-bottom: 12px;
+    position: relative;
+}
+
+.wrap_partition {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.product_figure_wrap > div > div{
+    display: inline-block;
+}
+
+.product_figure_wrap > div > div:nth-child(1){
+    left: 0;
+}
+
+.product_figure_wrap > div > div:nth-child(2){
+    float: right;
+}
+
+.btn-wrap > .division_btn_box > .btn:nth-child(1) {
+    background-color: #ef6253;
+}
+
+.btn-wrap > .division_btn_box > .btn:nth-child(2) {
+    background-color: #41b979;
+    margin-left: 10px;
+}
+
+.btn-wrap > .division_btn_box > .btn {
+    position: relative;
+    display: inline-flex;
+    flex: 1;
+    align-items: center;
+    border-radius: 10px;
+    color: #fff;
+    border: 0;
+}
+
+.btn-wrap > .division_btn_box > .btn > strong {
+    width: 55px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: -.27px;
+}
+
+.btn-wrap > .division_btn_box > .btn > .price {
+    margin-left: 10px;
+    line-height: 15px;
+}
+
+
+.btn-wrap > .division_btn_box > .btn > .price > .amount {
+    display: block;
+}
+
+.btn-wrap > .division_btn_box > .btn > .price > .amount > .num {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 700;
+}
+
+.btn-wrap > .division_btn_box > .btn > .price > .amount > .won{
+    font-size: 14px;
+    letter-spacing: -.21px;
+}
+
+.btn-wrap > .division_btn_box > .btn > .price > .desc{
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: hsla(0,0%,100%,.8);
 }
