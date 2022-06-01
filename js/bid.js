@@ -26,3 +26,25 @@ function priceChanged(min_price){
         isImmediatelyPurchaseCheckedVal()
     }
 }
+
+function bidCheck(param){
+    var form = document.bid;
+
+    if(document.getElementById('immediate_check').checked){
+        form.action = "./bid_action.php" + param;
+        form.submit();
+        return;
+    }
+    if(!form.price.value){
+        alert("가격을 입력해 주세요");
+        form.price.focus();
+        return;
+    }
+    if(!form.period.value){
+        alert("입찰기한을 입력해 주세요");
+        form.password.focus();
+        return;
+    }
+    form.action = "./bid_action.php" + param;
+    form.submit();
+}

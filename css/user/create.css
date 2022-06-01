@@ -1,0 +1,76 @@
+.container_content {
+    text-align: center;
+    margin: auto;
+    margin-top: 150px;
+    align-items: center;
+}
+.login_area{
+    font-size: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+
+}
+.idform{
+    margin-bottom: 8px
+}
+.passwordform{
+    margin-bottom: 15px;
+}
+
+input {
+    border: 0;
+    color: black;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #ebebeb;
+    padding-right: 5px;
+    outline: 0;
+    line-height: 26px;
+    width: 250px;
+}
+
+button{
+    height: 25px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+input[type="text"]:focus{
+    border-color: #343434 !important;
+}
+
+input[type="password"]:focus{
+    border-color: #343434 !important;
+}
+
+input[type="email"]:focus{
+    border-color: #343434 !important;
+}
+
+input[type="text"]:focus{
+    border-color: #343434 !important;
+}
+
+input[type="number"]:focus{
+    border-color: #343434 !important;
+}
+
+.create_btn{
+    border: 0;
+    background-color: black;
+    color: white;
+    width: 150px;
+    text-decoration: none;
+    border-radius: 15px;
+    align-items: center;
+
+}
+.selec_size{
+    margin-bottom: 20px;
+}

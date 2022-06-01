@@ -10,11 +10,13 @@ try{
 
 
   $query = "insert into user(email, password, shoe_size, money)
-            values(?, ?, ?)";
+            values(?, ?, ?, 0)";
   $stmt = $mysqli->prepare($query);
-  $stmt->bind_param("ssi",$email, $password, $user_id);
+  $stmt->bind_param("ssi",$email, $password, $size);
   $stmt->execute();
   $stmt->close();
+
+  $mysqli->commit();
 
   echo "  
   <script>
