@@ -7,6 +7,8 @@
   <link href="/css/footer.css" rel="stylesheet">
   <link href="/css/price.css" rel="stylesheet">
   <link href="/css/order.css" rel="stylesheet">
+  <title>ShoeKream</title>
+  <link rel="shortcut icon" href="../img/fav.png">
 </head>
 <body>
 
