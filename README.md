@@ -1,4 +1,4 @@
-# WP-assignment
+w# WP-assignment
 
 2022 first semester 
 Web programming team project
@@ -75,3 +75,10 @@ php -S 127.0.0.1:8000
     └── mypage.php
 
 ```
+
+
+## Reference
+
+* [Kream](https://kream.co.kr/)
+* [PHP](https://www.php.net/docs.php)
+
