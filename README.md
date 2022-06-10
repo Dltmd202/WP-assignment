@@ -1,4 +1,4 @@
-w# WP-assignment
+# WP-assignment
 
 2022 first semester 
 Web programming team project
