@@ -53,11 +53,9 @@
 <div class="container">
   <div class="content">
     <div class="col">
-      <div class="left_col">
-        <div class="detail_banner">
-          <div class="item_picture">
-            <img src="../<?= $row['photo']?>">
-          </div>
+      <div class="detail_banner">
+        <div class="item_picture">
+          <img src="../<?= $row['photo']?>">
         </div>
       </div>
     </div>
