@@ -1,6 +1,6 @@
 <?php
-
-$mysqli = new mysqli("localhost", "root", "1234", "wp");
+require("../conf/conf_db.php");
+$mysqli = new mysqli($db_hostname, $db_username, $db_password, $db_database);
 $mysqli->begin_transaction();
 
 try{

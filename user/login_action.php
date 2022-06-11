@@ -1,5 +1,6 @@
 <?php
-$con = mysqli_connect("localhost", "root", "1234", "wp")
+require("../conf/conf_db.php");
+$con = mysqli_connect($db_hostname, $db_username, $db_password, $db_database)
 or die("Can't access DB");
 
 $email = $_POST['email'];

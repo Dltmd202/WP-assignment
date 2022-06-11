@@ -1,6 +1,7 @@
 <?php
 
-$mysqli = new mysqli("localhost", "root", "1234", "wp");
+require("../conf/conf_db.php");
+$mysqli = new mysqli($db_hostname, $db_username, $db_password, $db_database);
 $mysqli->begin_transaction();
 
 if(isset($_POST['immediate'])){
@@ -56,7 +57,7 @@ if(isset($_POST['immediate'])){
     echo "
   <script>
     alert('{$price} 원으로 판매되었습니다.');
-    location.href='..';
+    window.location.replace('../price/detail.php?id={$id}');
     </script>
   ";
 
@@ -142,13 +143,14 @@ if(isset($_POST['immediate'])){
       echo "
           <script>
             alert('{$price} 원으로 판매를 등록하였습니다.');
-            location.href='..';
+            window.location.replace('../price/detail.php?id={$id}');
             </script>
           ";
     }
 
   } catch (mysqli_sql_exception $exception) {
     $mysqli->rollback();
+    header('HTTP/1.1 503 Service Unavailable');
     echo "
   <script>
     alert('서버 상태가 좋지않습니다.');
@@ -157,6 +159,7 @@ if(isset($_POST['immediate'])){
   ";
   } catch (InvalidArgumentException $exception) {
     $mysqli->rollback();
+    header('HTTP/1.1 400 Bad Request');
     echo "
   <script>
     alert('금액이 부족합니다.');

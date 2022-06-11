@@ -21,9 +21,10 @@
       </script>
     ";
   }
+  require("../conf/conf_db.php");
   $user_id = $_SESSION['user_id'];
-  $con = mysqli_connect("localhost", "root", "1234", "wp")
-  or die("Can't access DB");
+  $con = mysqli_connect($db_hostname, $db_username, $db_password, $db_database)
+or die("Can't access DB");
 
   $query = "SELECT * from user as u where u.id = {$user_id}";
   $result = mysqli_query($con, $query);

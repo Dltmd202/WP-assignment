@@ -10,12 +10,14 @@
   </head>
   <body>
     <?php
+
+    require("conf/conf_db.php");
       if(isset($_SESSION['size'])){
         $size = $_SESSION['size'];
       } else {
         $size = 260;
       }
-      $con = mysqli_connect("localhost", "root", "1234", "wp")
+      $con = mysqli_connect($db_hostname, $db_username, $db_password, $db_database)
       or die("Can't access DB");
 
       $query = "SELECT sh.id as id, sh.photo as photo, sh.name as name, b.name as brand,

@@ -13,6 +13,7 @@
 <?php include '../header.php'; ?>
 
 <?php
+  require("../conf/conf_db.php");
   $id = $_GET['id'];
 
   if(isset($_SESSION['size'])){
@@ -20,10 +21,10 @@
   } else {
     $size = 260;
   }
-  $con = mysqli_connect("localhost", "root", "1234", "wp")
+  $con = mysqli_connect($db_hostname, $db_username, $db_password, $db_database)
   or die("Can't access DB");
 
-  $query = "SELECT sh.id as id, sh.photo as photo, sh.name as name, b.name as brand,
+  $query = "SELECT sh.id as id, sh.photo as photo, sh.name as name, b.name as brand, sh.desc as shdesc,
                    (
                       SELECT s.price
                           FROM sell as s
@@ -70,8 +71,7 @@
               <?= $row['name']?>
             </p>
             <p class="desc">
-              <!--- TODO 상품에 desc column 추가하기 -->
-              조던 1 로우 골드 스타피쉬
+              <?= $row['shdesc']?>
             </p>
           </div>
           <div class="product_figure_wrap">
