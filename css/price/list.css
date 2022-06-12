@@ -1,0 +1,106 @@
+.home_products{
+    margin-top: 30px;
+}
+
+.product_title{
+    margin: 0 auto;
+    padding: 0 40px;
+    max-width: 1280px;
+}
+
+.product_list_wrap{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    overflow-anchor: none;
+}
+
+.product_list{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.product_item{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 20px 0;
+    padding: 0 12px;
+    width: calc(25% - 28px);
+}
+
+.product_item > .item_inner > .thumb_box > .product{
+    background-color: rgba(98, 98, 98, 0.6);
+    content: "";
+    overflow: hidden;
+    position: relative;
+    padding-top: 100%;
+    border-radius: 8px;
+}
+
+.product_item > .item_inner > .thumb_box > .product > img{
+    position: absolute;
+    top: 12%;
+    left: 12%;
+    width: 76%;
+    z-index: 1;
+}
+
+.title{
+    font-size: 20px;
+    letter-spacing: -.1px;
+    font-weight: 700;
+    color: #000;
+}
+
+.sub_title{
+    font-size: 14px;
+    letter-spacing: -.21px;
+    color: rgba(34,34,34,.5);
+}
+
+.info_box{
+    padding-top: 9px;
+}
+
+.info_box > .name {
+    line-height: 17px;
+    margin-top: 8.5px;
+    max-height: 34px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    font-size: 14px;
+    color: #222;
+}
+
+.info_box > .price {
+    padding-top: 7px;
+}
+
+.price > .desc {
+    line-height: 13px;
+    font-size: 11px;
+    color: rgba(34,34,34,.5);
+}
+
+.brand_text{
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+    height: 17px;
+    line-height: 17px;
+    padding-bottom: 2px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #222;
+}

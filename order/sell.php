@@ -19,7 +19,7 @@ if(!isset($_SESSION['email'])){
   echo "
     <script>
       alert('로그인 해주세요');
-      location.href='..';
+      location.href='../user/login.php';
       </script>
     ";
 }
@@ -46,13 +46,14 @@ $query = "SELECT sh.id as id, sh.photo as photo, sh.name as name, b.name as bran
 
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
+$bgColor = colorDistributer($row['id'] % 4);
 ?>
 
 <div class="container">
   <div class="content">
     <div class="col">
       <div class="detail_banner">
-        <div class="item_picture" style="background: <?= colorDistributer($row['id'] % 4) ?>">
+        <div class="item_picture" style="background: <?= $bgColor ?>">
           <img src="../<?= $row['photo']?>">
         </div>
       </div>

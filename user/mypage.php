@@ -31,7 +31,58 @@ or die("Can't access DB");
                 LEFT JOIN Authority as au on u.authority_id = au.id
                 where u.id = {$user_id}";
   $result = mysqli_query($con, $query);
-  $row = mysqli_fetch_array($result);
+  $user = mysqli_fetch_array($result);
+
+  $query = "select *
+              from bid as b
+              INNER JOIN trade as t on t.bid_id = b.id
+              where b.user_id = {$user_id}";
+
+  $result_bought = mysqli_query($con, $query);
+  $bought_cnt = mysqli_num_rows($result_bought);
+
+  $query = "select *
+              from Sell as s
+              INNER join trade as t on t.sell_id = s.id
+              where s.user_id = {$user_id}";
+
+  $result_sell = mysqli_query($con, $query);
+  $sold_cnt = (int)mysqli_num_rows($result_sell);
+
+  $query = "select count(*)
+                from bid as b
+                where b.user_id = {$user_id} && b.is_success = 0 && 
+                DATE_FORMAT(now(), '%Y-%m-%d') <= b.deadline";
+
+  $bidding_cnt_result = mysqli_query($con, $query);
+  $bidding_cnt = (int)mysqli_fetch_assoc($bidding_cnt_result)['count(*)'];
+
+  $query = "select count(*)
+                  from bid as b
+                  where b.user_id = {$user_id} && b.is_success = 0 && 
+                  DATE_FORMAT(now(), '%Y-%m-%d') > b.deadline";
+
+  $bidding_cnt_invalid_result = mysqli_query($con, $query);
+  $bidding_cnt_invalid = (int)mysqli_fetch_assoc($bidding_cnt_invalid_result)['count(*)'];
+
+
+  $query = "select count(*)
+                  from sell as s
+                  where s.user_id = {$user_id} && s.is_sold = 0 &&
+                  DATE_FORMAT(now(), '%Y-%m-%d') <= s.deadline";
+
+  $selling_cnt_result = mysqli_query($con, $query);
+  $selling_cnt = (int)mysqli_fetch_assoc($selling_cnt_result)['count(*)'];
+
+  $query = "select count(*)
+                  from sell as s
+                  where s.user_id = {$user_id} && s.is_sold = 0
+                  && DATE_FORMAT(now(), '%Y-%m-%d') > s.deadline;";
+
+  $selling_cnt_invalid_result = mysqli_query($con, $query);
+  $selling_cnt_invalid = (int)mysqli_fetch_assoc($selling_cnt_invalid_result)['count(*)'];
+
+  $bought_total_cnt = $bought_cnt + $bidding_cnt_invalid + $bidding_cnt;
 ?>
 
 <div class="container">
@@ -39,23 +90,23 @@ or die("Can't access DB");
     <div class="user_membership">
       <div class="user_detail">
         <div class="user_thumb">
-          <img src="../<?=$row['photo']?>" class="thumb_img">
+          <img src="../<?=$user['photo']?>" class="thumb_img">
         </div>
         <div class="user_info">
           <div class="info_box">
-            <strong class="name"><?=$row['email']?></strong>
-            <p class="email"><?=$row['shoe_size']?></p>
+            <strong class="name"><?=$user['email']?></strong>
+            <p class="email"><?=$user['shoe_size']?></p>
             <a href="./modify.php" class="btn btn outlinegrey small" type="button"> 프로필 수정 </a>
           </div>
         </div>
       </div>
       <div class="membership_detail">
         <a href="#" class="membership_item disabled">
-          <strong class="info"> <?=$row['name']?> </strong>
+          <strong class="info"> <?=$user['name']?> </strong>
           <p class="title"> 회원 등급 </p>
         </a>
         <a href="#" class="membership_item">
-          <strong class="info"> <?=$row['money']?>P </strong>
+          <strong class="info"> <?=$user['money']?>P </strong>
           <p class="title"> 포인트 </p>
         </a>
       </div>
@@ -64,11 +115,15 @@ or die("Can't access DB");
     <h3>구매 내역</h3>
     <div class="recent_purchase">
       <div class="purchase_list_tab">
-        <div class="tab_item total">
+        <div class="tab_item total purchased">
           <a href="#" class="tab_link">
             <dl class="tab_box">
               <dt class="title">전체</dt>
-              <dd class="count">0</dd>
+              <dd class="count">
+                <?php
+                echo $bought_cnt + $bidding_cnt_invalid + $bidding_cnt;
+                ?>
+              </dd>
             </dl>
           </a>
         </div>
@@ -76,15 +131,17 @@ or die("Can't access DB");
           <a href="#" class="tab_link">
             <dl class="tab_box">
               <dt class="title">입찰 중</dt>
-              <dd class="count">0</dd>
+              <dd class="count">
+                <?= $bidding_cnt ?>
+              </dd>
             </dl>
           </a>
         </div>
         <div class="tab_item">
           <a href="#" class="tab_link">
             <dl class="tab_box">
-              <dt class="title">진행 중</dt>
-              <dd class="count">0</dd>
+              <dt class="title">구매 완료</dt>
+              <dd class="count"><?= $bought_cnt ?></dd>
               </dl>
           </a>
         </div>
@@ -92,18 +149,31 @@ or die("Can't access DB");
           <a href="#" class="tab_link">
             <dl class="tab_box">
               <dt class="title">종료</dt>
-              <dd class="count">0</dd>
+              <dd class="count">
+                <?= $bidding_cnt_invalid ?>
+              </dd>
             </dl>
           </a>
         </div>
       </div>
       <div>
         <div class="purchase_list all bid">
-          <div class="empty_area">
-            <p class="desc">
-              거래 내역이 없습니다.
-            </p>
-          </div>
+          <?php
+          if($bought_cnt > 0){
+            for($j = 0; $j < $bought_cnt; $j++){
+              $bought = mysqli_fetch_array($result_bought);
+              echo "{$bought['date']} <br>";
+            }
+          } else {
+            echo "
+            <div class='empty_area'>
+              <p class='desc'>
+                거래 내역이 없습니다.
+              </p>
+            </div>
+            ";
+          }
+          ?>
         </div>
       </div>
     </div>
@@ -111,11 +181,15 @@ or die("Can't access DB");
     <h3>판매 내역</h3>
     <div class="recent_purchase">
       <div class="purchase_list_tab">
-        <div class="tab_item total">
+        <div class="tab_item total sold">
           <a href="#" class="tab_link">
             <dl class="tab_box">
               <dt class="title">전체</dt>
-              <dd class="count">0</dd>
+              <dd class="count">
+                <?php
+                  echo $sold_cnt + $selling_cnt + $selling_cnt_invalid;
+                ?>
+              </dd>
             </dl>
           </a>
         </div>
@@ -123,15 +197,15 @@ or die("Can't access DB");
           <a href="#" class="tab_link">
             <dl class="tab_box">
               <dt class="title">입찰 중</dt>
-              <dd class="count">0</dd>
+              <dd class="count"><?= $selling_cnt ?></dd>
             </dl>
           </a>
         </div>
         <div class="tab_item">
           <a href="#" class="tab_link">
             <dl class="tab_box">
-              <dt class="title">진행 중</dt>
-              <dd class="count">0</dd>
+              <dt class="title">판매 완료</dt>
+              <dd class="count"><?= $sold_cnt ?></dd>
             </dl>
           </a>
         </div>
@@ -139,18 +213,29 @@ or die("Can't access DB");
           <a href="#" class="tab_link">
             <dl class="tab_box">
               <dt class="title">종료</dt>
-              <dd class="count">0</dd>
+              <dd class="count"><?= $selling_cnt_invalid?></dd>
             </dl>
           </a>
         </div>
       </div>
       <div>
         <div class="purchase_list all bid">
-          <div class="empty_area">
-            <p class="desc">
-              거래 내역이 없습니다.
-            </p>
-          </div>
+          <?php
+            if($sold_cnt > 0){
+              for($i = 0; $i < $sold_cnt; $i++){
+                $sold = mysqli_fetch_array($result_sell);
+                echo "{$sold['date']} <br>";
+              }
+            } else {
+              echo "
+                <div class='empty_area'>
+                  <p class='desc'>
+                    거래 내역이 없습니다.
+                  </p>
+                </div>
+              ";
+            }
+          ?>
         </div>
       </div>
     </div>

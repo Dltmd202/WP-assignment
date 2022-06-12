@@ -19,7 +19,7 @@
     echo "
     <script>
       alert('로그인 해주세요');
-      location.href='..';
+      location.href='../user/login.php';
       </script>
     ";
   }

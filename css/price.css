@@ -172,3 +172,47 @@
     font-weight: 600;
     color: hsla(0,0%,100%,.8);
 }
+
+.btn.btn_wish.full {
+    height: 60px;
+    line-height: 58px;
+}
+
+.btn.btn_wish {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    color: #333;
+}
+
+.btn.btn_wish [class*=ico-]~span {
+    margin-left: 4px;
+}
+
+.btn.btn_wish .btn_text {
+    font-size: 15px;
+    letter-spacing: -.15px;
+    font-weight: 400;
+    letter-spacing: normal;
+    margin-left: 6px;
+}
+
+.btn.btn_wish .wish_count_num {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: normal;
+    margin-left: 6px;
+}
+
+.btn_wish {
+    margin-top: 12px;
+}
+

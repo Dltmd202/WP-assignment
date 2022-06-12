@@ -4,7 +4,7 @@
     <div class="top_inner">
       <ul class="top_list">
         <li class="top_item">
-          <a href="/#" class="top_link"> 고객센터 </a>
+          <a href="/user/charge_to_admin.php" class="top_link"> 충전하기 </a>
         </li>
         <li class="top_item">
           <a href="/user/mypage.php" class="top_link"> 관심상품 </a>
@@ -12,12 +12,24 @@
         <li class="top_item">
           <a href="/user/mypage.php" class="top_link"> 마이페이지 </a>
         </li>
-        <li class="top_item">
-          <a href="/user/login.php" class="top_link"> 로그인 </a>
-        </li>
-        <li class="top_item">
-          <a href="/" class="top_link"> 로그아웃 </a>
-        </li>
+        <?php
+        if(!isset($_SESSION['email'])){
+          echo "
+             <li class='top_item'>
+                <a href='/user/login.php' class='top_link'> 로그인 </a>
+             </li>
+             <li class='top_item'>
+                <a href='/user/create.php' class='top_link'> 회원가입 </a>
+            </li>
+            ";
+        } else {
+          echo "
+              <li class='top_item'>
+                <a href='/user/logout.php' class='top_link'> 로그아웃 </a>
+              </li>
+            ";
+        }
+        ?>
       </ul>
     </div>
   </div>

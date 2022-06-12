@@ -123,10 +123,10 @@
     color: rgba(34,34,34,.5);
 }
 
-.tab_item.total .count {
+.tab_item.purchased .count {
     color: #f15746;
 }
 
-
-.tab_box {
+.tab_item.sold .count {
+    color: #41b979;
 }

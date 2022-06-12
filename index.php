@@ -31,7 +31,8 @@
                  ) as price
                  FROM shoe as sh
                  LEFT JOIN brand as b on sh.brand_id = b.id
-                 LIMIT 4";
+                 ORDER BY sh.id desc
+                 LIMIT 8";
       $result = mysqli_query($con, $query);
     ?>
 
@@ -60,31 +61,31 @@
       <div class="shortcut_collection">
         <div class="shortcut_items_wrapper">
           <div class="shortcut_items">
-            <div class="shortcut_item">
+            <a class="shortcut_item" href="price/list.php?sort=new">
               <div class="shortcut_item_img" style="background: <?=colorDistributer(0)?>;">
               </div>
               <p class="shortcut_item_title">NEW!</p>
-            </div>
-            <div class="shortcut_item">
+            </a>
+            <a class="shortcut_item" href="price/list.php?sort=pop">
               <div class="shortcut_item_img" style="background: <?=colorDistributer(1)?>;">
               </div>
               <p class="shortcut_item_title">BEST!</p>
-            </div>
-            <div class="shortcut_item">
+            </a>
+            <a class="shortcut_item" href="price/list.php?brand=converse">
               <div class="shortcut_item_img" style="background: <?=colorDistributer(2)?>;">
               </div>
-              <p class="shortcut_item_title">ARRIVAL!</p>
-            </div>
-            <div class="shortcut_item">
+              <p class="shortcut_item_title">Converse</p>
+            </a>
+            <a class="shortcut_item" href="price/list.php?brand=nike">
               <div class="shortcut_item_img" style="background: <?=colorDistributer(3)?>;">
               </div>
-              <p class="shortcut_item_title">EVENT!</p>
-            </div>
-            <div class="shortcut_item">
+              <p class="shortcut_item_title">Nike</p>
+            </a>
+            <a class="shortcut_item" href="price/list.php?brand=new balance">
               <div class="shortcut_item_img" style="background: <?=colorDistributer(2)?>;">
               </div>
-              <p class="shortcut_item_title">NEW!</p>
-            </div>
+              <p class="shortcut_item_title">New Balance</p>
+            </a>
           </div>
         </div>
       </div>
@@ -100,7 +101,7 @@
         <div class="product_list_wrap">
           <div class="product_list">
             <?php
-            for($i = 0; $i < 4; $i++){
+            for($i = 0; $i < 8; $i++){
               $row = mysqli_fetch_array($result);
               if($row['price'] == null){
                 $row['price'] = '-';

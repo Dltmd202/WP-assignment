@@ -12,8 +12,8 @@ if(!isset($_SESSION['email'])){
     ";
 }
 $money = 100000;
-if($_SESSION['authority'] != 3){
-  $cache = 1000000;
+if($_SESSION['authority'] == "ADMIN"){
+  $money = 1000000;
 }
 
 $user_id = $_SESSION['user_id'];
@@ -27,7 +27,7 @@ $stmt->close();
 
 $mysqli->commit();
 
-if($_SESSION['authority'] == 3){
+if($_SESSION['authority'] == "ADMIN"){
   echo "
       <script>
         alert('관리자 등급으로 확인되어 1,000,000원이 충전되었습니다.')

@@ -66,18 +66,10 @@ if(isset($_POST['immediate'])){
     $stmt->execute();
     $stmt->close();
 
-
-    $query = "insert into bought(bid_id, user_id, dtime)
+    $query = "insert into trade(bid_id, sell_id, dtime)
                 values(?, ?, now())";
     $stmt = $mysqli->prepare($query);
-    $stmt->bind_param("ii", $bid_id, $user_id);
-    $stmt->execute();
-    $stmt->close();
-
-    $query = "insert into Sold(sell_id, user_id, dtime)
-                values(?, ?, now())";
-    $stmt = $mysqli->prepare($query);
-    $stmt->bind_param("ii", $sell_id, $sell_user_id);
+    $stmt->bind_param("ii", $bid_id, $sell_id);
     $stmt->execute();
     $stmt->close();
 
@@ -164,17 +156,10 @@ if(isset($_POST['immediate'])){
       $stmt->execute();
       $stmt->close();
 
-      $query = "insert into bought(bid_id, user_id, dtime)
+      $query = "insert into trade(bid_id, sell_id, dtime)
                 values(?, ?, now())";
       $stmt = $mysqli->prepare($query);
-      $stmt->bind_param("ii", $bid_id, $user_id);
-      $stmt->execute();
-      $stmt->close();
-
-      $query = "insert into Sold(sell_id, user_id, dtime)
-                values(?, ?, now())";
-      $stmt = $mysqli->prepare($query);
-      $stmt->bind_param("ii", $sell_id, $sell_user_id);
+      $stmt->bind_param("ii", $bid_id, $sell_id);
       $stmt->execute();
       $stmt->close();
 
