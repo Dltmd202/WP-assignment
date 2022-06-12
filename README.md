@@ -11,8 +11,6 @@ Web programming team project
 
 • Language : PHP 8.1.4
 
-• Build : Gradle 7.3.2
-
 • DataBase : mysql Ver 8.0.28
 
 • Document : https://github.com/Dltmd202/WP-assignment
