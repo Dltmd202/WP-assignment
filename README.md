@@ -21,11 +21,21 @@ Web programming team project
 1. set configuration
 
 > [DataBase Configuration Setting File](./conf/conf_db.php)
+> 
 > set database `username`, `password`, `database`
    
 2. execute ddl
    
-> [ddl File](./ddl.sql) execute this query
+> [ddl File](./ddl.sql) 
+> 
+> execute this query
+
+
+3. set MockUp
+
+> [MockUp data](./mock.sql)
+>
+> execute this query
 
 ### Run To localhost
 
