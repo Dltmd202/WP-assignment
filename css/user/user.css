@@ -1,0 +1,132 @@
+.user_membership {
+    padding: 23px 0 23px 23px;
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+}
+
+.user_detail {
+    display: flex;
+}
+
+.user_thumb {
+    position: relative;
+    margin-right: 12px;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    flex-shrink: 0;
+}
+
+.thumb_img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.user_info {
+    display: flex;
+}
+
+.btn {
+    margin-top: 12px;
+    align-self: flex-start;
+    height: 36px;
+    line-height: 34px;
+}
+
+.membership_detail {
+    position: relative;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.membership_item {
+    pointer-events: none;
+    cursor: default;
+    display: inline-block;
+    width: 160px;
+    text-align: center;
+}
+
+.membership_item > .info {
+    display: block;
+    line-height: 19px;
+    font-size: 16px;
+    letter-spacing: -.16px;
+    font-weight: 700;
+}
+
+.membership_item > .title {
+    line-height: 19px;
+    font-size: 13px;
+    letter-spacing: -.07px;
+    color: rgba(34,34,34,.5);
+}
+
+
+.mypage-container {
+    padding: 40px 40px 0 40px;
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+.purchase_list_tab {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    background-color: #fafafa;
+    border-radius: 12px;
+}
+
+.tab_item {
+    display: table-cell;
+    text-align: center;
+}
+
+.tab_link {
+    position: relative;
+    display: block;
+    padding-top: 18px;
+    height: 96px;
+}
+
+.tab_link  .title{
+    font-size: 13px;
+    letter-spacing: -.07px;
+    color: rgba(34,34,34,.8);
+    text-decoration-thickness: auto;
+    text-align: center;
+}
+
+.tab_link .count {
+    margin-top: 2px;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -.09px;
+    font-weight: 700;
+    text-decoration-thickness: auto;
+    text-align: center;
+}
+
+.bid .empty_area {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.empty_area .desc {
+    font-size: 13px;
+    letter-spacing: -.07px;
+    color: rgba(34,34,34,.5);
+}
+
+.tab_item.total .count {
+    color: #f15746;
+}
+
+
+.tab_box {
+}

@@ -50,6 +50,7 @@ if(isset($_POST['immediate'])){
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("iii", $price, $user_id, $order_shoe_id);
     $stmt->execute();
+    $bid_id = $stmt->insert_id;
     $stmt->close();
 
     $query = "update user as u set u.money = u.money - ? WHERE u.id = ?";
@@ -62,6 +63,21 @@ if(isset($_POST['immediate'])){
     $query = "update user as u set u.money = u.money + ? WHERE u.id = ?";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("ii", $price, $sell_user_id);
+    $stmt->execute();
+    $stmt->close();
+
+
+    $query = "insert into bought(bid_id, user_id, dtime)
+                values(?, ?, now())";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param("ii", $bid_id, $user_id);
+    $stmt->execute();
+    $stmt->close();
+
+    $query = "insert into Sold(sell_id, user_id, dtime)
+                values(?, ?, now())";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param("ii", $sell_id, $sell_user_id);
     $stmt->execute();
     $stmt->close();
 
@@ -139,6 +155,7 @@ if(isset($_POST['immediate'])){
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param("iii", $min_price, $user_id, $order_shoe_id);
       $stmt->execute();
+      $bid_id = $stmt->insert_id;
       $stmt->close();
 
       $query = "update user as u set u.money = u.money + ? WHERE u.id = ?";
@@ -147,11 +164,25 @@ if(isset($_POST['immediate'])){
       $stmt->execute();
       $stmt->close();
 
+      $query = "insert into bought(bid_id, user_id, dtime)
+                values(?, ?, now())";
+      $stmt = $mysqli->prepare($query);
+      $stmt->bind_param("ii", $bid_id, $user_id);
+      $stmt->execute();
+      $stmt->close();
+
+      $query = "insert into Sold(sell_id, user_id, dtime)
+                values(?, ?, now())";
+      $stmt = $mysqli->prepare($query);
+      $stmt->bind_param("ii", $sell_id, $sell_user_id);
+      $stmt->execute();
+      $stmt->close();
+
       $mysqli->commit();
       $price = $min_price;
       echo "
             <script>
-              alert('{$min_price} 원으로 입찰이 성사되었습니다.');
+              alert('{$min_price} 원으로 구매가 성사되었습니다.');
               location.href='..';
               </script>
             ";

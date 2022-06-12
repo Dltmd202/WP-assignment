@@ -4,7 +4,7 @@
     <div class="top_inner">
       <ul class="top_list">
         <li class="top_item">
-          <a href="/#" class="top_link"> 고객센터 </a>
+          <a href="/user/charge_to_admin.php" class="top_link"> 충전하기 </a>
         </li>
         <li class="top_item">
           <a href="/user/mypage.php" class="top_link"> 관심상품 </a>

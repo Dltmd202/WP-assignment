@@ -21,7 +21,7 @@ if(isset($_POST['immediate'])){
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("ii", $size, $id);
     $stmt->execute();
-    $stmt->bind_result($sell_id, $price, $order_shoe_id, $bidded_user_id);
+    $stmt->bind_result($bidded_id, $price, $order_shoe_id, $bidded_user_id);
     $stmt->fetch();
     $stmt->close();
 
@@ -41,7 +41,7 @@ if(isset($_POST['immediate'])){
 
     $query = "update bid as b set b.is_success = 1 WHERE b.id = ?";
     $stmt = $mysqli->prepare($query);
-    $stmt->bind_param("i",$sell_id);
+    $stmt->bind_param("i",$bidded_id);
     $stmt->execute();
     $stmt->close();
 
@@ -49,6 +49,21 @@ if(isset($_POST['immediate'])){
              values(?, ?, 1, ?, now(), DATE_ADD(now(), INTERVAL 1 DAY))";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("iii", $price, $user_id, $order_shoe_id);
+    $stmt->execute();
+    $sold_id = $stmt->insert_id;
+    $stmt->close();
+
+    $query = "insert into bought(bid_id, user_id, dtime)
+                values(?, ?, now())";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param("ii", $bidded_id, $bidded_user_id);
+    $stmt->execute();
+    $stmt->close();
+
+    $query = "insert into Sold(sell_id, user_id, dtime)
+                values(?, ?, now())";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param("ii", $sold_id, $user_id);
     $stmt->execute();
     $stmt->close();
 
@@ -116,11 +131,26 @@ if(isset($_POST['immediate'])){
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param("iii", $max_price, $user_id, $order_shoe_id);
       $stmt->execute();
+      $sold_id = $stmt->insert_id;
       $stmt->close();
 
       $query = "update user as u set u.money = u.money + ? WHERE u.id = ?";
       $stmt = $mysqli->prepare($query);
       $stmt->bind_param("ii", $max_price, $user_id);
+      $stmt->execute();
+      $stmt->close();
+
+      $query = "insert into bought(bid_id, user_id, dtime)
+                values(?, ?, now())";
+      $stmt = $mysqli->prepare($query);
+      $stmt->bind_param("ii", $bid_id, $bidded_user_id);
+      $stmt->execute();
+      $stmt->close();
+
+      $query = "insert into Sold(sell_id, user_id, dtime)
+                values(?, ?, now())";
+      $stmt = $mysqli->prepare($query);
+      $stmt->bind_param("ii", $sold_id, $user_id);
       $stmt->execute();
       $stmt->close();
 

@@ -61,27 +61,27 @@
         <div class="shortcut_items_wrapper">
           <div class="shortcut_items">
             <div class="shortcut_item">
-              <div class="shortcut_item_img">
+              <div class="shortcut_item_img" style="background: <?=colorDistributer(0)?>;">
               </div>
               <p class="shortcut_item_title">NEW!</p>
             </div>
             <div class="shortcut_item">
-              <div class="shortcut_item_img">
+              <div class="shortcut_item_img" style="background: <?=colorDistributer(1)?>;">
               </div>
-              <p class="shortcut_item_title">NEW!</p>
+              <p class="shortcut_item_title">BEST!</p>
             </div>
             <div class="shortcut_item">
-              <div class="shortcut_item_img">
+              <div class="shortcut_item_img" style="background: <?=colorDistributer(2)?>;">
               </div>
-              <p class="shortcut_item_title">NEW!</p>
+              <p class="shortcut_item_title">ARRIVAL!</p>
             </div>
             <div class="shortcut_item">
-              <div class="shortcut_item_img">
+              <div class="shortcut_item_img" style="background: <?=colorDistributer(3)?>;">
               </div>
-              <p class="shortcut_item_title">NEW!</p>
+              <p class="shortcut_item_title">EVENT!</p>
             </div>
             <div class="shortcut_item">
-              <div class="shortcut_item_img">
+              <div class="shortcut_item_img" style="background: <?=colorDistributer(2)?>;">
               </div>
               <p class="shortcut_item_title">NEW!</p>
             </div>
@@ -105,11 +105,12 @@
               if($row['price'] == null){
                 $row['price'] = '-';
               }
+              $color = colorDistributer($row['id'] % 4);
               echo "
                 <div class='product_item'>
                   <a href='/price/detail.php?id={$row['id']}' class='item_inner'>
                     <div class='thumb_box'>
-                      <div class='product'>
+                      <div class='product' style='background: {$color}'>
                         <img src='{$row['photo']}'>
                       </div>
                     </div>
@@ -140,5 +141,6 @@
     </div>
 
     <?php include 'footer.php'; ?>
+    <script src="js/common.js"></script>
   </body>
 </html>

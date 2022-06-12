@@ -52,7 +52,7 @@ $row = mysqli_fetch_array($result);
   <div class="content">
     <div class="col">
       <div class="detail_banner">
-        <div class="item_picture">
+        <div class="item_picture" style="background: <?= colorDistributer($row['id'] % 4) ?>">
           <img src="../<?= $row['photo']?>">
         </div>
       </div>
