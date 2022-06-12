@@ -3,6 +3,32 @@
 2022 first semester 
 Web programming team project
 
+
+## Environment
+
+```
+• IDE : IntelliJ IDEA , DataGrid
+
+• Language : PHP 8.1.4
+
+• Build : Gradle 7.3.2
+
+• DataBase : mysql Ver 8.0.28
+
+• Document : https://github.com/Dltmd202/WP-assignment
+```
+
+### Migrate
+
+1. set configuration
+
+> [DataBase Configuration Setting File](./conf/conf_db.php)
+> set database `username`, `password`, `database`
+   
+2. execute ddl
+   
+> [ddl File](./ddl.sql) execute this query
+
 ### Run To localhost
 
 ```sh
@@ -21,6 +47,8 @@ php -S 127.0.0.1:8000
 
 ```
 ├── README.md
+├── conf
+│   └── conf_db.php
 ├── css
 │   ├── common.css
 │   ├── footer.css
@@ -30,7 +58,9 @@ php -S 127.0.0.1:8000
 │   ├── price.css
 │   └── user
 │       ├── create.css
-│       └── login.css
+│       ├── login.css
+│       └── user.css
+├── ddl.sql
 ├── docs
 │   └── erd.png
 ├── footer.php
@@ -44,10 +74,13 @@ php -S 127.0.0.1:8000
 │   │   ├── 3.webp
 │   │   └── 4.webp
 │   ├── to_left.svg
-│   └── to_right.svg
+│   ├── to_right.svg
+│   └── user
+│       └── base.png
 ├── index.php
 ├── js
 │   ├── bid.js
+│   ├── common.js
 │   └── sell.js
 ├── order
 │   ├── bid.php
@@ -66,6 +99,7 @@ php -S 127.0.0.1:8000
 │   └── modify.php
 ├── team.iml
 └── user
+    ├── charge_to_admin.php
     ├── create.php
     ├── create_action.php
     ├── login.php
@@ -73,6 +107,7 @@ php -S 127.0.0.1:8000
     ├── logout.php
     ├── modify.php
     └── mypage.php
+
 
 ```
 
