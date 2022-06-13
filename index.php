@@ -46,21 +46,23 @@
     <div class="container">
       <div class="home_card_list">
         <div class="banner_slide">
-          <button class="slick_arrow_left"></button>
-          <div>
+          <div class="banner-img">
+            <button class="slick_arrow_left"></button>
+            <div>
+            </div>
+            <button class="slick_arrow_right"></button>
+            <ul class="slick_dots">
+              <li>
+                <button></button>
+              </li>
+              <li>
+                <button></button>
+              </li>
+              <li>
+                <button></button>
+              </li>
+            </ul>
           </div>
-          <button class="slick_arrow_right"></button>
-          <ul class="slick_dots">
-            <li>
-              <button></button>
-            </li>
-            <li>
-              <button></button>
-            </li>
-            <li>
-              <button></button>
-            </li>
-          </ul>
         </div>
       </div>
       <div class="shortcut_collection">
@@ -83,8 +85,7 @@
                 <h1>
                   <div class="card">
                   BEST
-                    <br>
-                    Item
+                    <br>Item
                   </div>
                 </h1>
               </div>
@@ -123,7 +124,7 @@
         <div class="product_list_wrap">
           <div class="product_list">
             <?php
-            for($i = 0; $i < 8; $i++){
+            for($i = 0; $i < 4; $i++){
               $row = mysqli_fetch_array($result);
               if($row['price'] == null){
                 $row['price'] = '-';

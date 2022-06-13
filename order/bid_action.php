@@ -33,10 +33,7 @@ if(isset($_POST['immediate'])){
 
 
     if($money < $price) {
-      echo $price;
-      echo "<br>";
-      echo $money;
-      throw new InvalidArgumentException("금액이 부족합니다.");
+      throw new InvalidArgumentException();
     }
 
     $query = "update sell as s set s.is_sold = 1 WHERE s.id = ?";
@@ -56,7 +53,6 @@ if(isset($_POST['immediate'])){
     $query = "update user as u set u.money = u.money - ? WHERE u.id = ?";
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param("ii", $price, $user_id);
-    $stmt->execute();
     $stmt->execute();
     $stmt->close();
 
@@ -85,20 +81,21 @@ if(isset($_POST['immediate'])){
 
   }catch (mysqli_sql_exception $exception){
     $mysqli->rollback();
-    throw $exception;
+    header('HTTP/1.1 503 Service Unavailable');
     echo "
     <script>
       alert('서버 상태가 좋지않습니다.');
-      location.href='..';
+    window.location.replace('../price/detail.php?id={$id}');
       </script>
     ";
   } catch (InvalidArgumentException $exception){
     $mysqli->rollback();
+    header('HTTP/1.1 400 Bad Request');
     echo "
-  <script>
-    alert('금액이 부족합니다.');
-//    location.href='..';
-    </script>
+      <script>
+        alert('금액이 부족합니다.');
+        window.location.replace('../price/detail.php?id={$id}');
+        </script>
   ";
   }
 } else {
@@ -200,7 +197,7 @@ if(isset($_POST['immediate'])){
     echo "
   <script>
     alert('서버 상태가 좋지않습니다.');
-    location.href='..';
+    window.location.replace('../price/detail.php?id={$id}');
     </script>
   ";
   } catch (InvalidArgumentException $exception) {
@@ -208,8 +205,8 @@ if(isset($_POST['immediate'])){
     header('HTTP/1.1 400 Bad Request');
     echo "
   <script>
-    alert('금액이 부족합니다.');
-    location.href='..';
+    alert('금액이 부족합니다.3');
+    window.location.replace('../price/detail.php?id={$id}');
     </script>
   ";
   }

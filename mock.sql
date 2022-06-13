@@ -37,3 +37,6 @@ INSERT INTO wp.Order_Shoe (id, shoe_id, size) VALUES (26, 4, 250);
 INSERT INTO wp.Order_Shoe (id, shoe_id, size) VALUES (27, 4, 270);
 INSERT INTO wp.Order_Shoe (id, shoe_id, size) VALUES (28, 4, 280);
 
+INSERT INTO wp.Authority (id, tag, name) VALUES (1, 'USER', '일반회원');
+INSERT INTO wp.Authority (id, tag, name) VALUES (2, 'VIP', '특별회원');
+INSERT INTO wp.Authority (id, tag, name) VALUES (3, 'ADMIN', '관리자');
