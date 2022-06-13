@@ -1,5 +1,3 @@
-create database wp;
-
 create table wp.Authority
 (
     id   bigint auto_increment
@@ -74,19 +72,6 @@ create table wp.Bid
         foreign key (user_id) references wp.User (id)
 );
 
-create table wp.Bought
-(
-    id      bigint auto_increment
-        primary key,
-    bid_id  bigint   null,
-    user_id bigint   null,
-    dtime   datetime not null,
-    constraint Bought___fk_bid
-        foreign key (bid_id) references wp.Bid (id),
-    constraint Bought___fk_user
-        foreign key (user_id) references wp.User (id)
-);
-
 create table wp.Sell
 (
     id            bigint auto_increment,
@@ -104,17 +89,17 @@ create table wp.Sell
         foreign key (user_id) references wp.User (id)
 );
 
-create table wp.Sold
+create table wp.Trade
 (
     id      bigint auto_increment
         primary key,
-    sell_id bigint   null,
-    user_id bigint   null,
+    bid_id  bigint   null,
     dtime   datetime not null,
-    constraint Purchased___fk_sell
-        foreign key (sell_id) references wp.Sell (id),
-    constraint Purchased___fk_user
-        foreign key (user_id) references wp.User (id)
+    sell_id bigint   null,
+    constraint Bought___fk_bid
+        foreign key (bid_id) references wp.Bid (id),
+    constraint Trade___fk_sell
+        foreign key (sell_id) references wp.Sell (id)
 );
 
 create table wp.Wish
