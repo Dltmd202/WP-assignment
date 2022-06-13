@@ -87,7 +87,14 @@
     border-radius: 10px;
     height: 100px;
     background-color: rgba(34, 34, 34, 0.5);
+    vertical-align: middle;
 }
+
+.shortcut_item_img > img {
+    width: 100%;
+    max-width: 110px;
+}
+
 
 .shortcut_item_title{
     margin-top: 8px;
@@ -198,4 +205,20 @@
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     border-bottom: 1px solid #222;
+}
+
+.shortcut_item_img > h1 {
+    display: table;
+    text-align: center;
+    table-layout: fixed;
+}
+
+h1 > .card {
+    font-family: 'LeferiPoint-BlackObliqueA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackObliqueA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
 }

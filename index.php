@@ -28,10 +28,15 @@
                         WHERE os.size = {$size} && os.shoe_id = sh.id && s.is_sold = 0 && DATE_FORMAT(now(), '%Y-%m-%d') <= s.deadline
                         ORDER BY s.price ASC
                         LIMIT 1
-                 ) as price
+                 ) as price,
+                 (
+                    select count(*)
+                      from Wish
+                      where shoe_id = sh.id
+                 ) as wish_cnt  
                  FROM shoe as sh
                  LEFT JOIN brand as b on sh.brand_id = b.id
-                 ORDER BY sh.id desc
+                 ORDER BY wish_cnt desc, sh.id desc
                  LIMIT 8";
       $result = mysqli_query($con, $query);
     ?>
@@ -63,26 +68,43 @@
           <div class="shortcut_items">
             <a class="shortcut_item" href="price/list.php?sort=new">
               <div class="shortcut_item_img" style="background: <?=colorDistributer(0)?>;">
+                <h1>
+                <div class="card">
+                  New
+                  <br>
+                  Item
+                </div>
+                </h1>
               </div>
               <p class="shortcut_item_title">NEW!</p>
             </a>
             <a class="shortcut_item" href="price/list.php?sort=pop">
               <div class="shortcut_item_img" style="background: <?=colorDistributer(1)?>;">
+                <h1>
+                  <div class="card">
+                  BEST
+                    <br>
+                    Item
+                  </div>
+                </h1>
               </div>
               <p class="shortcut_item_title">BEST!</p>
             </a>
             <a class="shortcut_item" href="price/list.php?brand=converse">
               <div class="shortcut_item_img" style="background: <?=colorDistributer(2)?>;">
+                <img src="/img/brand/converse.png" style="height: 90%; width: 85%"/>
               </div>
               <p class="shortcut_item_title">Converse</p>
             </a>
             <a class="shortcut_item" href="price/list.php?brand=nike">
               <div class="shortcut_item_img" style="background: <?=colorDistributer(3)?>;">
+                <img src="/img/brand/nike.png" style="height: 95%; width: 80%"/>
               </div>
               <p class="shortcut_item_title">Nike</p>
             </a>
             <a class="shortcut_item" href="price/list.php?brand=new balance">
               <div class="shortcut_item_img" style="background: <?=colorDistributer(2)?>;">
+                <img src="/img/brand/newbalance.png" style="height: 100%; width: 85%"/>
               </div>
               <p class="shortcut_item_title">New Balance</p>
             </a>

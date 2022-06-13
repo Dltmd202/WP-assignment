@@ -7,7 +7,7 @@
           <a href="/user/charge_to_admin.php" class="top_link"> 충전하기 </a>
         </li>
         <li class="top_item">
-          <a href="/user/mypage.php" class="top_link"> 관심상품 </a>
+          <a href="/user/wish.php" class="top_link"> 관심상품 </a>
         </li>
         <li class="top_item">
           <a href="/user/mypage.php" class="top_link"> 마이페이지 </a>
