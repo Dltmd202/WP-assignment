@@ -63,24 +63,37 @@ php -S 127.0.0.1:8000
 │   ├── header.css
 │   ├── index.css
 │   ├── order.css
+│   ├── price
+│   │   └── list.css
 │   ├── price.css
 │   └── user
 │       ├── create.css
 │       ├── login.css
-│       └── user.css
+│       ├── user.css
+│       └── wish.css
 ├── ddl.sql
 ├── docs
-│   └── erd.png
+│   ├── erd.png
+│   ├── erdV2.jpg
+│   └── erdV3.jpg
 ├── footer.php
 ├── header.php
 ├── img
+│   ├── brand
+│   │   ├── converse.png
+│   │   ├── newbalance.png
+│   │   └── nike.png
 │   ├── dropdownbtn.svg
 │   ├── fav.png
 │   ├── shoe
 │   │   ├── 1.webp
 │   │   ├── 2.webp
 │   │   ├── 3.webp
-│   │   └── 4.webp
+│   │   ├── 4.webp
+│   │   ├── 5.png
+│   │   ├── 6.png
+│   │   ├── 7.png
+│   │   └── 8.png
 │   ├── to_left.svg
 │   ├── to_right.svg
 │   └── user
@@ -90,6 +103,7 @@ php -S 127.0.0.1:8000
 │   ├── bid.js
 │   ├── common.js
 │   └── sell.js
+├── mock.sql
 ├── order
 │   ├── bid.php
 │   ├── bid_action.php
@@ -104,7 +118,8 @@ php -S 127.0.0.1:8000
 │   ├── detail.php
 │   ├── list.php
 │   ├── list_header.php
-│   └── modify.php
+│   ├── modify.php
+│   └── wish_action.php
 ├── team.iml
 └── user
     ├── charge_to_admin.php
@@ -114,8 +129,8 @@ php -S 127.0.0.1:8000
     ├── login_action.php
     ├── logout.php
     ├── modify.php
-    └── mypage.php
-
+    ├── mypage.php
+    └── wish.php
 
 ```
 
